@@ -1,5 +1,7 @@
 import paho.mqtt.client as mqtt
 from paho.mqtt.client import MQTTProtocolVersion, CallbackAPIVersion
+import time
+
 def messageHandler(client, userdata, message):
     print(f'Recieved message on {message.topic}: {message.payload}')
 
@@ -26,10 +28,18 @@ client2.on_message = messageHandler
 client1.subscribe("/pynqbridge/77/#",2)
 client2.subscribe("/pynqbridge/78/#",2)
 
+client1.loop_start()
+client2.loop_start()
+
 try:
-    client1.loop_forever() 
-    client2.loop_forever()  
-except:
-    client1.disconnect()
-    client2.disconnect()
+    while True:
+        time.sleep(0.1)  # Keep the main thread alive
+except KeyboardInterrupt:
     print("Comms ended")
+finally:
+    client1.loop_stop()
+    client1.disconnect()
+    client2.loop_stop()
+    client2.disconnect()
+    print("Clients disconnected")
+    
