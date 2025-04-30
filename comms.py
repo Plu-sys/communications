@@ -13,8 +13,8 @@ client_id2 = "reciever78"
 client1 = mqtt.Client(callback_api_version=CallbackAPIVersion.VERSION2, client_id=client_id, protocol=MQTTProtocolVersion.MQTTv5, transport="tcp")
 client2 = mqtt.Client(callback_api_version=CallbackAPIVersion.VERSION2, client_id=client_id2, protocol=MQTTProtocolVersion.MQTTv5, transport="tcp")
 
-client1.username_pw_set("robot_77_2","umbagDavgo")
-client2.username_pw_set("robot_78_2","tomCipveu")
+client1.username_pw_set("robot_77_2","PASS1")
+client2.username_pw_set("robot_78_2","PASS2")
 
 client1.connect("mqtt.ics.ele.tue.nl", 1883, 60) # Address of the tue server
 client2.connect("mqtt.ics.ele.tue.nl", 1883, 60) # Address of the tue server
