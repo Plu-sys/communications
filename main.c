@@ -3,17 +3,18 @@
 #include <stdbool.h>
 #include <string.h>
 #include <time.h>
-#include <windows.h> //change when running on linux based system
+#include <windows.h>
 
 
 int main(){
+    int d;
 
     mosquitto_lib_init();
     printf("Started\n");
 
     char id[5] = "pub1";
     char username1[11]="robot_77_1";
-    char pass1[10]="PASSWORD";
+    char pass1[10]="unUfGach)";
     char host[20]="mqtt.ics.ele.tue.nl";
 
     void *user1 = NULL;
@@ -85,5 +86,6 @@ int main(){
     mosquitto_destroy(client1);
     mosquitto_lib_cleanup();
     printf("End of program");
+    scanf(" %d", &d);
     return 0;
 }
